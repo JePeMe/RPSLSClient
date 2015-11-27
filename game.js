@@ -18,7 +18,9 @@ var rl = readline.createInterface(process.stdin, process.stdout);
 
 var weapons = ['rock','paper','scissors','lizard','spock'];
 
-fs.readFile('intro.txt', renderIntro);
+function start() {
+    fs.readFile('intro.txt', renderIntro);
+}
 
 function renderIntro(err, data) {
     if (err) {
@@ -49,7 +51,7 @@ function waitForEnter() {
     rl.on('line', startTheGame);
     function startTheGame() {
         rl.removeAllListeners('line');
-        start();
+        showSelection();
     }
     spinnerInterval = setInterval(renderWaitForEnter, 400);
 }
@@ -71,7 +73,7 @@ function renderWaitForEnter() {
     rl.write(chalk.blue(' PRESS ENTER TO START'));
 }
 
-function start() {
+function showSelection() {
     waitedForEnter();
     readline.cursorTo(process.stdin,0,0);
     readline.clearScreenDown(process.stdin);
@@ -83,7 +85,7 @@ function renderChoices() {
     for (var i = 0; i < weapons.length; i++) {
         rl.write(chalk.white("[" +(i + 1) + "] ") + weapons[i] + '\n');
     }
-    rl.question(chalk.blue('Choose your weapon wisely!'), readChoice)
+    rl.question(chalk.blue('Choose your weapon wisely!\n'), readChoice)
 }
 
 function readChoice(data){
