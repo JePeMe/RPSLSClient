@@ -1,6 +1,7 @@
 var chalk = require('chalk');
 var readline = require('readline');
 var fs = require('fs');
+var path = require('path');
 var rps = require('rock-paper-scissors-lizard-spock-stream');
 var airpaste = require('airpaste');
 
@@ -19,12 +20,12 @@ var rl = readline.createInterface(process.stdin, process.stdout);
 var weapons = ['rock','paper','scissors','lizard','spock'];
 
 function start() {
-    fs.readFile('intro.txt', renderIntro);
+    fs.readFile(path.resolve(__dirname, './intro.txt'), renderIntro);
 }
 
 function renderIntro(err, data) {
     if (err) {
-        console.err(err);
+        console.error(err);
         process.exit(1);
     }
     readline.cursorTo(process.stdin,0,0);
