@@ -7,7 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node game.js"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JePeMe/RPSLSClient/issues"
+  },
+  "author": "JePeMe",
   "license": "ISC",
   "dependencies": {
     "airpaste": "^1.0.9",
